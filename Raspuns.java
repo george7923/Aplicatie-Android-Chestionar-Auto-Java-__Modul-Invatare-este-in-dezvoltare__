@@ -12,7 +12,6 @@ public class Raspuns {
 
     }
 
-    // Metodele getter și setter pentru toate proprietățile
 
     public String getText() {
         return text;
