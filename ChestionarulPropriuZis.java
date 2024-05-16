@@ -232,17 +232,17 @@ public class ChestionarulPropriuZis extends AppCompatActivity {
     private Boolean CheckCorectitudine(CheckBox A, CheckBox B, CheckBox C, Intrebare Q) {
         Boolean[][] matrice = new Boolean[2][3];
 
-        // Prima linie a matricei conține valorile selectate ale CheckBox-urilor
+        
         matrice[0][0] = A.isChecked();
         matrice[0][1] = B.isChecked();
         matrice[0][2] = C.isChecked();
 
-        // A doua linie a matricei conține valorile corecte ale răspunsurilor
+        
         matrice[1][0] = Q.getRaspuns1().isCorect();
         matrice[1][1] = Q.getRaspuns2().isCorect();
         matrice[1][2] = Q.getRaspuns3().isCorect();
 
-        // Verifică dacă fiecare coloană are elementele egale între ele
+        
         for (int i = 0; i < 3; i++) {
             //Log.e("CheckCorectitudine", "Coloana " + i + ": selected=" + matrice[0][i] + ", corect=" + matrice[1][i]);
             if (!matrice[0][i].equals(matrice[1][i])) {
