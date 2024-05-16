@@ -82,15 +82,12 @@ public class SignUpFragment extends Fragment {
                 boolean isPasswordValid = isValidPassword(pass);
                 boolean isEmailValid = isValidEmail(userEmail);
                 if (isPasswordValid && isEmailValid) {
-                    // Crează o instanță a DBHelper
 
 
                     try {
-                        // Folosește metoda insertCont pentru a insera datele
 
                         bd.insertCont(user, pass, userEmail, userPhone);
 
-                        // Verificați dacă inserarea a avut succes
 
                     } catch (SQLiteException e) {
                         Toast.makeText(getContext(), "Eroare! " + e.getMessage(), Toast.LENGTH_SHORT).show();
