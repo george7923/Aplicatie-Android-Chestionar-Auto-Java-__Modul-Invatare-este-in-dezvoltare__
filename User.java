@@ -4,7 +4,6 @@ public class User {
     private static String user;
     private static String username;
 
-    // Metodele getter și setter pentru toate proprietățile
 
     public static String getUser() {
         return user;
