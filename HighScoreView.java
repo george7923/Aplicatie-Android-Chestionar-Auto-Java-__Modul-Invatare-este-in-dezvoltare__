@@ -49,10 +49,8 @@ public class HighScoreView extends AppCompatActivity {
     }
 
     private void displayHighScores() {
-        // Clear existing rows
         tableLayout.removeAllViews();
 
-        // Add headers row
         TableRow headersRow = new TableRow(this);
         String[] headers = {"Username", "Time", "Questions", "Mistakes", "Correct", "Rating"};
         for (String header : headers) {
@@ -62,7 +60,6 @@ public class HighScoreView extends AppCompatActivity {
         }
         tableLayout.addView(headersRow);
 
-        // Add data rows
         if (cursor != null && cursor.moveToFirst()) {
             do {
                 TableRow dataRow = new TableRow(this);
@@ -87,9 +84,7 @@ public class HighScoreView extends AppCompatActivity {
                     addTextViewToRow(dataRow, String.valueOf(mistakes));
                     addTextViewToRow(dataRow, String.valueOf(correct));
                     addTextViewToRow(dataRow, rating);
-                    // Rest of your code...
                 } else {
-                    // Handle the case where one or more columns don't exist
                     continue;
                 }
 
