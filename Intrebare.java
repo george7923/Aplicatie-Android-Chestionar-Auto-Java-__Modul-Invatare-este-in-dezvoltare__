@@ -33,7 +33,6 @@ public class Intrebare {
     }
 
 
-    // Metodele getter și setter pentru toate proprietățile
 
     public String getIntrebare() {
         return intrebare;
