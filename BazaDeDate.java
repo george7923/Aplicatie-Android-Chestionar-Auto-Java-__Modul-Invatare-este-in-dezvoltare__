@@ -94,15 +94,10 @@ public class BazaDeDate extends SQLiteOpenHelper{
             ios.close();
             os.close();
 
-            // Utilizați inputStream pentru a citi fișierul
-            // Exemplu: InputStreamReader reader = new InputStreamReader(inputStream);
-            //          BufferedReader bufferedReader = new BufferedReader(reader);
-            //          String line = bufferedReader.readLine();
-            //          ...
-             // Închideți stream-ul după utilizare
+            
         } catch (IOException e) {
             e.printStackTrace();
-            // Tratați excepția în cazul în care fișierul nu poate fi deschis
+            
         }
         Log.e("CopyDb","Database Copied");
     }
@@ -113,11 +108,11 @@ public class BazaDeDate extends SQLiteOpenHelper{
     public void getDatabaseInfo() {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        // Obține numele bazei de date
+        
         String dbName = db.getPath();
         Log.e("DATABASE TAG! ", "Numele bazei de date: " + dbName);
 
-        // Obține numele tuturor tabelelor
+        
         Cursor cursor = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
@@ -130,7 +125,7 @@ public class BazaDeDate extends SQLiteOpenHelper{
     public void afiseazaDate() {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        // Obține numele tuturor tabelelor
+        
         Cursor cursorTables = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
 
         if (cursorTables.moveToFirst()) {
@@ -138,7 +133,7 @@ public class BazaDeDate extends SQLiteOpenHelper{
                 String tableName = cursorTables.getString(0);
                 Log.d("DATABASE TAG! ", "Numele tabelului: " + tableName);
 
-                // Obține toate datele din tabel
+                
                 Cursor cursorData = db.rawQuery("SELECT * FROM " + tableName, null);
                 if (cursorData.moveToFirst()) {
                     while (!cursorData.isAfterLast()) {
@@ -306,12 +301,12 @@ public class BazaDeDate extends SQLiteOpenHelper{
 
 
 
-    // Metoda pentru a sterge tabela
+    
     public void dropTable(String tableName) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DROP TABLE IF EXISTS " + tableName);
     }
-    // Metode pentru tabela highscore
+    
     public void insertHighscore(String username, String timpulRamas, int intrebarileRaspunse, int intrebarileGresite, int intrebarileCorecte, String calificativ) {
         int ID_Cont = GainUsername(username);
         if (ID_Cont != -1) {
@@ -324,19 +319,19 @@ public class BazaDeDate extends SQLiteOpenHelper{
             contentValues.put("IntrebarileCorecte", intrebarileCorecte);
             contentValues.put("Calificativ", calificativ);
 
-            // Executăm interogarea de inserare utilizând metoda insert()
+            
             long result = db.insert("highscore", null, contentValues);
 
-            // Verificăm rezultatul inserării
+            
             if (result == -1) {
-                // Inserarea a eșuat
+                
                 Log.e("MyApp", "Inserare highscore eșuată");
             } else {
-                // Inserarea a avut succes
+                
                 Log.d("MyApp", "Highscore inserat cu succes");
             }
         } else {
-            // Numele de utilizator invalid, inserarea nu poate fi efectuată
+            
             Log.e("MyApp", "Nume de utilizator invalid");
         }
     }
@@ -345,13 +340,13 @@ public class BazaDeDate extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getReadableDatabase();
         int ID = -1;
 
-        // Definim interogarea SQL pentru a obține ID-ul bazat pe numele de utilizator
+        
         String query = "SELECT ID FROM cont WHERE username = ?";
 
-        // Executăm interogarea utilizând metoda rawQuery()
+        
         Cursor cursor = db.rawQuery(query, new String[]{Username});
 
-        // Verificăm dacă s-a găsit un rând în rezultatele interogării
+        
         if (cursor.moveToFirst()) {
             // Extragem ID-ul din primul rând
             int IndexID = cursor.getColumnIndex("ID");
@@ -368,8 +363,7 @@ public class BazaDeDate extends SQLiteOpenHelper{
             return -1;
         }
 
-        // Închidem cursorul pentru a elibera resursele
-
+        
     }
     public SQLiteDatabase getDatabase() {
         // Deschide baza de date
